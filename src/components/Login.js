@@ -5,7 +5,6 @@ import Register from "./Register.js";
 class Login extends Component {
    render() {
       console.log("hello");
-      // let display = this.state;
       return (
          <Router>
             <div>

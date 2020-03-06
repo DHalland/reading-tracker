@@ -37,21 +37,7 @@ class App extends Component {
       else if (reg) {
          current = <Register loginHandler={this.loginHandler} />;
       }
-      return (
-         // <Router>
-         //    <div>
-         //       <div className="App" className="login">
-         //          Reading Tracker
-         //       </div>
-         //       <Login></Login>
-         //       <Switch>
-         //          <Route component={Login.js} />
-         //          <Route path="/register" component={Register.js} />
-         //       </Switch>
-         //    </div>
-         // </Router>
-         <div>{current}</div>
-      );
+      return <div>{current}</div>;
    }
 }
 
