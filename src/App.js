@@ -1,9 +1,44 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { Component } from "react";
 import "./App.css";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import { Link, BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
-   return <div className="App">Learn React</div>;
+class App extends Component {
+   constructor(props) {
+      super(props);
+      this.registerHandler = this.registerHandler.bind(this);
+      this.loginHandler = this.loginHandler.bind(this);
+      this.state = {
+         login: true,
+         reg: false
+      };
+   }
+
+   registerHandler() {
+      this.setState({
+         login: false,
+         reg: true
+      });
+   }
+   loginHandler() {
+      this.setState({
+         login: true,
+         reg: false
+      });
+   }
+
+   render() {
+      var current;
+      let login = this.state.login;
+      let reg = this.state.reg;
+
+      if (login) current = <Login registerHandler={this.registerHandler} />;
+      else if (reg) {
+         current = <Register loginHandler={this.loginHandler} />;
+      }
+      return <div>{current}</div>;
+   }
 }
 
 export default App;
