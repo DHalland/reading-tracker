@@ -1,24 +1,8 @@
 const userRoutes = require('express').Router();
 let User = require('../models/user.model');
 const bcrypt = require('bcryptjs');
-
-userRoutes.route('/').get((req, res) => {
-    User.find()
-        .then(users => res.json(users))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
-userRoutes.route('/:id').get((req, res) => {
-    User.findById(req.params.id)
-        .then(user => res.json(user))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
-userRoutes.route('/:id').delete((req, res) => {
-    User.findByIdAndDelete(req.params.id)
-        .then(user => res.json('User deleted.'))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
+const jwt = require('jsonwebtoken');
+const keys = require('../keys');
 
 userRoutes.route('/add').post((req, res) => {
     const { name, email, password } = req.body;
@@ -43,19 +27,26 @@ userRoutes.route('/add').post((req, res) => {
                     newUser.password = hash;
                     newUser.save()
                         .then(user => {
-                            res.json({
-                                user: {
-                                    id: user.id,
-                                    name: user.name,
-                                    email: user.email,
+
+                            jwt.sign(
+                                {id: user.id},
+                                keys.secret,
+                                {expiresIn: 3600},
+                                (err, token) => {
+                                    if(err) throw err;
+                                    res.json({
+                                        token,
+                                        user: {
+                                            id: user.id,
+                                            name: user.name,
+                                            email: user.email,
+                                        }
+                                    })
                                 }
-                            })
+                            )
                         })
                 })
             })
-
-
-
         });
 });
 

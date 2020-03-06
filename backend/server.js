@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const PORT = 4000;
 const keys = require('./keys');
 
+
 app.use(cors());
 app.use(express.json());
 
@@ -30,4 +31,7 @@ app.use('/entries', entryRouter);
 
 const userRouter = require('./routes/users');
 app.use('/users', userRouter);
+
+const authRouter = require('./routes/auth');
+app.use('/auth', authRouter);
 
