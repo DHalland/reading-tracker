@@ -1,15 +1,19 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const PORT = 4000;
+const keys = require('./keys');
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 
-mongoose.connect('mongodb+srv://keithg6:keithg6@cluster0-j7du0.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect(keys.mongoConnString, {
+     useNewUrlParser: true, 
+     useUnifiedTopology: true,
+     useCreateIndex: true 
+    });
 const connection = mongoose.connection;
 
 
@@ -22,5 +26,8 @@ connection.once('open', function() {
 })
 
 const entryRouter = require('./routes/entries');
-app.use('/entries', entryRouter)
+app.use('/entries', entryRouter);
+
+const userRouter = require('./routes/users');
+app.use('/users', userRouter);
 
