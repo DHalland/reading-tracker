@@ -4,7 +4,6 @@ import Register from "./Register.js";
 
 class Login extends Component {
    render() {
-      console.log("hello");
       return (
          <Router>
             <div>

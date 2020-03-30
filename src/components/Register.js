@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
+import axios from "axios";
 
 class Register extends Component {
    constructor() {
@@ -11,6 +12,7 @@ class Register extends Component {
          password: ""
       };
 
+      this.handleSubmit = this.handleSubmit.bind(this);
       // this.name = this.name.bind(this);
       // this.email = this.email.bind(this);
       // this.password = this.password.bind(this);
@@ -19,6 +21,29 @@ class Register extends Component {
    onChange = e => {
       this.setState({ [e.target.id]: e.target.value });
    };
+
+   handleSubmit(event) {
+      event.preventDefault();
+      axios
+         .post(
+            "http://localhost:4000/users/add",
+            {
+               user: {
+                  name: this.state.name,
+                  email: this.state.email,
+                  password: this.state.password
+               }
+            }
+            // ,{ withCredentials: false }
+         )
+         .then(response => {
+            console.log("registration success", response);
+         })
+         .catch(error => {
+            console.log("registration failure", error);
+         });
+      // window.location = "/";
+   }
 
    render() {
       const newUser = {
@@ -30,8 +55,8 @@ class Register extends Component {
       console.log(newUser);
 
       return (
-         <Router>
-            <div>
+         <div>
+            <form onSubmit={this.handleSubmit}>
                <div>
                   <div class="form-group" />
                   <label for="exampleInputEmail1">Email address</label>
@@ -49,9 +74,9 @@ class Register extends Component {
                   <label htmlFor="exampleInputEmail1">Username</label>
                   <input
                      onChange={this.onChange}
-                     type="email"
+                     type="name"
                      class="form-control"
-                     id="username"
+                     id="name"
                      aria-describedby="emailHelp"
                      placeholder="Enter username"
                   />
@@ -67,16 +92,15 @@ class Register extends Component {
                   />
                </div>
                <div>
-                  <Link
-                     to="/"
-                     onClick={this.props.loginHandler}
+                  <input
+                     type="submit"
+                     // onClick={this.props.loginHandler}
                      className="btn btn-primary"
-                  >
-                     Register
-                  </Link>
+                     value="Register"
+                  />
                </div>
-            </div>
-         </Router>
+            </form>
+         </div>
       );
    }
 }
