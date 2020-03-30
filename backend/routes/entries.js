@@ -1,32 +1,33 @@
 const entryRoutes = require('express').Router();
-let Entry = require('../models/entry.model');
+const Entry = require('../models/entry.model');
+const auth = require('../mid/auth')
 
-entryRoutes.route('/').get((req, res) => {
+entryRoutes.route('/').get(auth, (req, res) => {
     Entry.find()
         .then(entries => res.json(entries))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-entryRoutes.route('/:id').get((req, res) => {
+entryRoutes.route('/:id').get(auth, (req, res) => {
     Entry.findById(req.params.id)
     .then(entry => res.json(entry))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-entryRoutes.route('/:id').delete((req, res) => {
+entryRoutes.route('/:id').delete(auth, (req, res) => {
     Entry.findByIdAndDelete(req.params.id)
     .then(entry => res.json('Entry deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-entryRoutes.route('/add').post((req, res) => {
+entryRoutes.route('/add').post(auth, (req, res) => {
     let entry = new Entry(req.body);
     entry.save()
         .then(() => res.json('entry added'))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
-entryRoutes.route('/update/:id').post((req, res) => {
+entryRoutes.route('/update/:id').post(auth, (req, res) => {
     Entry.findById(req.params.id)
     .then(entry => {
         entry.entry_name = req.body.entry_name;

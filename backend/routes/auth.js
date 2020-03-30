@@ -3,6 +3,7 @@ let User = require('../models/user.model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../keys');
+const auth = require('../mid/auth')
 
 userRoutes.route('/').post((req, res) => {
     const { name, email, password } = req.body;
