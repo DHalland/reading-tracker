@@ -40,6 +40,11 @@ userRoutes.route('/').post((req, res) => {
         });
 });
 
+userRoutes.route('/user').get(auth, (req, res) => {
+    User.findById(req.user.id)
+    .select('-password')
+    .then(user => res.json(user))
+})
 
 //REMOVE AFTER TESTING
 userRoutes.route('/').get( (req, res) => {
