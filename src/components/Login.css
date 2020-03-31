@@ -1,0 +1,30 @@
+.container-fluid{
+    height: 100vh;
+    background: url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1453&q=80)
+}
+
+.header {
+    text-align: center;
+    color: white;
+}
+
+.login {
+    padding: 20px;
+    background-color: white;
+    margin: auto;
+    width: 250px;
+    margin-top: 20vh;
+    border-radius: 25px;
+    height: 300px;
+}
+
+label {
+    color: black;
+    font-size: 20px;
+}
+
+.form-group{
+    width: 210px;
+    height: 80px;
+}
+
