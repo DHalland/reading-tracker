@@ -57,7 +57,6 @@ class Register extends Component {
          <div>
             <form onSubmit={this.handleSubmit}>
                <div>
-                  <div class="form-group" />
                   <label for="exampleInputEmail1">Email address</label>
                   <input
                      onChange={this.onChange}
@@ -69,7 +68,6 @@ class Register extends Component {
                   />
                </div>
                <div>
-                  <div className="form-group" />
                   <label htmlFor="exampleInputEmail1">Username</label>
                   <input
                      onChange={this.onChange}
@@ -80,7 +78,7 @@ class Register extends Component {
                      placeholder="Enter username"
                   />
                </div>
-               <div class="form-group">
+               <div>
                   <label for="exampleInputPassword1">Password</label>
                   <input
                      onChange={this.onChange}
