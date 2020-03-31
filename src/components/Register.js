@@ -28,19 +28,18 @@ class Register extends Component {
          .post(
             "http://localhost:4000/users/add",
             {
-               user: {
-                  name: this.state.name,
-                  email: this.state.email,
-                  password: this.state.password
-               }
-            }
-            // ,{ withCredentials: false }
+               name: this.state.name,
+               email: this.state.email,
+               password: this.state.password
+            },
+            { withCredentials: false }
          )
          .then(response => {
             console.log("registration success", response);
+            window.location = "/";
          })
          .catch(error => {
-            console.log("registration failure", error);
+            console.log("registration failure", error.response);
          });
       // window.location = "/";
    }
