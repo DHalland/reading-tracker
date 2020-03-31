@@ -21,6 +21,7 @@ class App extends Component {
       });
    }
    loginHandler() {
+      console.log("Registration Completed");
       this.setState({
          login: true,
          reg: false
