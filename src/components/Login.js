@@ -48,7 +48,7 @@ class Login extends Component {
             </div>
             <div className="login">
                <form onSubmit={this.handleSubmit}>
-                  <div className="form-group">
+                  <div className="login-email">
                      <label for="email">Email address</label>
                      <input
                         type="email"
@@ -60,7 +60,7 @@ class Login extends Component {
                      />
                   </div>
                   <br></br>
-                  <div className="form-group">
+                  <div className="login-password">
                      <label for="password">Password</label>
                      <input
                         type="password"
@@ -71,9 +71,9 @@ class Login extends Component {
                      />
                   </div>
                   <br></br>
-                  <div className="button-div">
+                  <div className="login-register">
                      <button type="submit" className="btn btn-primary">
-                        Submit
+                        Login
                      </button>
                      <Router>
                         <Link
