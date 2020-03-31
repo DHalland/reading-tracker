@@ -80,7 +80,7 @@ class Login extends Component {
                      <button type="submit" className="btn btn-primary">
                         Submit
                   </button>
-                  {/* <Router>
+                  <Router>
                      <Link
                         to="/register"
                         onClick={this.props.registerHandler}
@@ -88,7 +88,7 @@ class Login extends Component {
                      >
                         Register
                   </Link>
-                  </Router> */}
+                  </Router>
                   </div>
                </form>
             </div>
