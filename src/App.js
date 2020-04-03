@@ -56,6 +56,7 @@ class App extends Component {
          <Router forceRefresh={true}>
             <Route exact path ="/" component={Login}/>
             <Route path="/register" component={Register}/>
+            <Route path="/home" component ={Home}/>
          </Router>
       </div>
       );

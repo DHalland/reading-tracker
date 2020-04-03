@@ -31,7 +31,8 @@ class Login extends Component {
             console.log("login success", response);
             this.setState({
                data: { response }
-            });
+            })
+            .then(window.location = "/home")
             //Swindow.location = "/";
          })
          .catch(error => {

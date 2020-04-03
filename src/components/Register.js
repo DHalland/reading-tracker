@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import { Route, Link, BrowserRouter as Router, Redirect } from "react-router-dom";
 import axios from "axios";
 import './Register.css';
 
@@ -37,7 +37,7 @@ class Register extends Component {
          )
          .then(response => {
             console.log("registration success", response);
-            window.location = "/";
+           
          })
          .catch(error => {
             console.log("registration failure", error.response);
