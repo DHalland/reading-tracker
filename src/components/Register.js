@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
+import './Register.css';
 
 class Register extends Component {
    constructor() {
@@ -54,49 +55,60 @@ class Register extends Component {
       console.log(newUser);
 
       return (
-         <div>
-            <form onSubmit={this.handleSubmit}>
-               <div>
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input
-                     onChange={this.onChange}
-                     type="email"
-                     class="form-control"
-                     id="email"
-                     aria-describedby="emailHelp"
-                     placeholder="Enter email"
-                  />
-               </div>
-               <div>
-                  <label htmlFor="exampleInputEmail1">Username</label>
-                  <input
-                     onChange={this.onChange}
-                     type="name"
-                     class="form-control"
-                     id="name"
-                     aria-describedby="emailHelp"
-                     placeholder="Enter username"
-                  />
-               </div>
-               <div>
-                  <label for="exampleInputPassword1">Password</label>
-                  <input
-                     onChange={this.onChange}
-                     type="password"
-                     class="form-control"
-                     id="password"
-                     placeholder="Password"
-                  />
-               </div>
-               <div>
-                  <input
-                     type="submit"
-                     // onClick={this.props.loginHandler}
-                     className="btn btn-primary"
-                     value="Register"
-                  />
-               </div>
-            </form>
+         <div className="container-fluid">
+            <div className="register">
+               <form onSubmit={this.handleSubmit}>
+                  <div className="register-email">
+                     <label for="email">Email address</label>
+                     <input
+                        onChange={this.onChange}
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter email"
+                     />
+                  </div>
+                  <br></br>
+                  <div className="register-username">
+                     <label htmlFor="username">Username</label>
+                     <input
+                        onChange={this.onChange}
+                        type="name"
+                        class="form-control"
+                        id="name"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter username"
+                     />
+                  </div>
+                  <br></br>
+                  <div className="register-password">
+                     <label for="password">Password</label>
+                     <input
+                        onChange={this.onChange}
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="Password"
+                     />
+                  </div>
+                  <br></br>
+                  <div className="register-login">
+                     <button type="submit" className="btn btn-primary">
+                        Register
+                     </button>
+                     <Router>
+                        <Link
+                           to="/login"
+                           onClick={this.props.loginHandler}
+                           className="btn btn-link"
+                        >
+                           Login
+                        </Link>
+                     </Router>
+                  </div>
+               </form>
+            </div>
          </div>
       );
    }
