@@ -8,7 +8,7 @@ class Home extends Component {
       super();
 
       this.state = {
-         token: []
+         token: [this.props.location.state.data]
       };
    }
 

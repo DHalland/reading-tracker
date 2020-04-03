@@ -37,7 +37,6 @@ class Register extends Component {
          )
          .then(response => {
             console.log("registration success", response);
-           
          })
          .catch(error => {
             console.log("registration failure", error.response);

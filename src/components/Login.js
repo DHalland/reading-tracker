@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Login.css";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import { Route, Link, BrowserRouter as Router, Redirect } from "react-router-dom";
 import Register from "./Register.js";
 import axios from "axios";
 
@@ -11,7 +11,8 @@ class Login extends Component {
       this.state = {
          email: "",
          password: "",
-         data: []
+         res: "",
+         loggedIn: false,
       };
    }
 
@@ -30,10 +31,12 @@ class Login extends Component {
          .then(response => {
             console.log("login success", response);
             this.setState({
-               data: { response }
+               res: response
+            }, () => {
+               this.setState({
+                  loggedIn: true
+               })
             })
-            .then(window.location = "/home")
-            //Swindow.location = "/";
          })
          .catch(error => {
             console.log("login failure", error.response);
@@ -42,53 +45,65 @@ class Login extends Component {
    };
 
    render() {
-      return (
-         <div className="container-fluid">
-            <div className="header">
-               <h1>Reading Tracker</h1>
-            </div>
-            <div className="login">
-               <form onSubmit={this.handleSubmit}>
-                  <div className="login-email">
-                     <label for="email">Email address</label>
-                     <input
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        aria-describedby="emailHelp"
-                        placeholder="Enter email"
-                        onChange={this.onChange}
-                     />
-                  </div>
-                  <br></br>
-                  <div className="login-password">
-                     <label for="password">Password</label>
-                     <input
-                        type="password"
-                        class="form-control"
-                        id="password"
-                        placeholder="Password"
-                        onChange={this.onChange}
-                     />
-                  </div>
-                  <br></br>
-                  <div className="login-register">
-                     <button type="submit" className="btn btn-primary">
-                        Login
+      if (!this.state.loggedIn) {
+         return (
+            <div className="container-fluid">
+               <div className="header">
+                  <h1>Reading Tracker</h1>
+               </div>
+               <div className="login">
+                  <form onSubmit={this.handleSubmit}>
+                     <div className="login-email">
+                        <label for="email">Email address</label>
+                        <input
+                           type="email"
+                           class="form-control"
+                           id="email"
+                           aria-describedby="emailHelp"
+                           placeholder="Enter email"
+                           onChange={this.onChange}
+                        />
+                     </div>
+                     <br></br>
+                     <div className="login-password">
+                        <label for="password">Password</label>
+                        <input
+                           type="password"
+                           class="form-control"
+                           id="password"
+                           placeholder="Password"
+                           onChange={this.onChange}
+                        />
+                     </div>
+                     <br></br>
+                     <div className="login-register">
+                        <button type="submit" className="btn btn-primary">
+                           Login
                      </button>
-                     <Router forceRefresh={true}>
-                        <Link
-                           to="/register"
-                           className="btn btn-link"
-                        >
-                           Register
+                        <Router forceRefresh={true}>
+                           <Link
+                              to="/register"
+                              className="btn btn-link"
+                           >
+                              Register
                         </Link>
-                     </Router>
-                  </div>
-               </form>
+                        </Router>
+                     </div>
+                  </form>
+               </div>
             </div>
-         </div>
-      );
+         );
+      }
+      else{
+         return(
+            <Redirect to={{
+               pathname: "/home",
+
+               state: {data: this.state.res.data.token}
+            }}
+            />
+         )
+      }
    }
 }
 
