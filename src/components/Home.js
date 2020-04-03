@@ -1,19 +1,29 @@
-import React, {Component} from "react";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import React, { Component } from "react";
+import "./Home.css";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 
 class Home extends Component {
-    constructor(){
-        super();
+   constructor() {
+      super();
 
-        this.state ={
-            token: [],
-        }
-    }
+      this.state = {
+         token: []
+      };
+   }
 
-    render(){
-       return <h1>hello</h1>
-    }
+   render() {
+      return (
+         <div className="container-fluid-home">
+            <div className="user-info">
+               <div className="top-left">Currently Reading</div>
+               <button className="entry-button">
+                  <span>New Entry</span>
+               </button>
+            </div>
+         </div>
+      );
+   }
 }
 
 export default Home;
