@@ -1,5 +1,6 @@
 .container-fluid {
    height: 100vh;
+   padding-top: 10vh;
    background: url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1453&q=80);
 }
 
@@ -16,7 +17,8 @@
    width: 250px;
    margin-top: 20vh;
    border-radius: 25px;
-   height: 350px;
+   height: 325 px;
+   box-shadow: 0 8px 7px -7px black;
 }
 .login-email {
    padding-top: 10px;
@@ -28,11 +30,9 @@
    padding-left: 10px;
    padding-right: 10px;
 }
-
 .login-register {
-   padding: 0px;
+   padding: 10px;
 }
-
 label {
    color: black;
    font-size: 20px;
