@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Login.css";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 import Register from "./Register.js";
 import axios from "axios";
 
@@ -75,10 +75,9 @@ class Login extends Component {
                      <button type="submit" className="btn btn-primary">
                         Login
                      </button>
-                     <Router>
+                     <Router forceRefresh={true}>
                         <Link
                            to="/register"
-                           onClick={this.props.registerHandler}
                            className="btn btn-link"
                         >
                            Register
