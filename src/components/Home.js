@@ -8,9 +8,15 @@ class Home extends Component {
       super();
 
       this.state = {
-         token: [this.props.location.state.data]
+         token: []
       };
    }
+
+componentDidMount(){
+    this.setState({
+        token: this.props.location.state.data,
+    })
+}
 
    render() {
       return (
