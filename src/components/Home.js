@@ -15,6 +15,7 @@ class Home extends Component {
 componentDidMount(){
     this.setState({
         token: this.props.location.state.data,
+        id: this.props.location.state.data.user.id
     })
 }
 
