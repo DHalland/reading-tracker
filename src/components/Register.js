@@ -41,7 +41,7 @@ class Register extends Component {
          .catch(error => {
             console.log("registration failure", error.response);
          });
-      // window.location = "/";
+      window.location = "/";
    }
 
    render() {
@@ -54,7 +54,7 @@ class Register extends Component {
       console.log(newUser);
 
       return (
-         <div className="container-fluid">
+         <div className="container-fluid" id="reg-container">
             <div className="register">
                <form onSubmit={this.handleSubmit}>
                   <div className="register-email">

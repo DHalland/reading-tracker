@@ -9,7 +9,9 @@ entryRoutes.route('/').get(auth, (req, res) => {
 });
 
 entryRoutes.route('/:id').get(auth, (req, res) => {
-    Entry.findById(req.params.id)
+    Entry.find({
+        user_id: req.params.id
+    })
     .then(entry => res.json(entry))
     .catch(err => res.status(400).json('Error: ' + err));
 });

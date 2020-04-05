@@ -8,6 +8,9 @@ const Entry = new Schema({
     entry_name: {
         type: String
     },
+    entry_author: {
+        type: String
+    },
     entry_time: {
         type: Number
     },

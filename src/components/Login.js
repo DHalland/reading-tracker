@@ -98,7 +98,6 @@ class Login extends Component {
          return(
             <Redirect to={{
                pathname: "/home",
-
                state: {data: this.state.res.data}
             }}
             />

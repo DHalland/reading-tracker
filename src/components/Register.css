@@ -1,6 +1,6 @@
-.container-fluid-reg {
+#reg-container {
    height: 100vh;
-   padding-top: 20vh;
+   padding-top: 30vh;
    background: url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1453&q=80);
 }
 
@@ -12,6 +12,7 @@
    border-radius: 25px;
    height: 380px;
    box-shadow: 0 8px 6px -6px black;
+   text-align: center;
 }
 .register-email {
    padding-top: 10px;
@@ -41,4 +42,5 @@ label {
 .form-group {
    width: 210px;
    height: 80px;
+   text-align: center;
 }

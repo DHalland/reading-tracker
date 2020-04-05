@@ -1,3 +1,8 @@
+@font-face {
+   font-family: 'Gotu', sans-serif;
+   src: url("https://fonts.googleapis.com/css2?family=Gotu&display=swap");
+ }
+
 .container-fluid {
    height: 100vh;
    padding-top: 10vh;
@@ -5,12 +10,16 @@
 }
 
 .header {
+   background-color: rgb(0, 0 , 0, 0.8);
+   font-family: Gotu;
    text-align: center;
    color: white;
    padding-top: 20px;
+   padding-bottom: 10px;;
 }
 
 .login {
+   text-align: center;
    overflow: auto;
    background-color: white;
    margin: auto;
