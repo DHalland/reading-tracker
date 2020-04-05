@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-import { Route, Link, BrowserRouter as Router, Redirect } from "react-router-dom";
+import {
+   Route,
+   Link,
+   BrowserRouter as Router,
+   Redirect,
+} from "react-router-dom";
 import axios from "axios";
-import './Register.css';
+import "./Register.css";
 
 class Register extends Component {
    constructor() {
@@ -10,7 +15,7 @@ class Register extends Component {
       this.state = {
          name: "",
          email: "",
-         password: ""
+         password: "",
       };
 
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,7 +24,7 @@ class Register extends Component {
       // this.password = this.password.bind(this);
    }
 
-   onChange = e => {
+   onChange = (e) => {
       this.setState({ [e.target.id]: e.target.value });
    };
 
@@ -31,14 +36,14 @@ class Register extends Component {
             {
                name: this.state.name,
                email: this.state.email,
-               password: this.state.password
+               password: this.state.password,
             },
             { withCredentials: false }
          )
-         .then(response => {
+         .then((response) => {
             console.log("registration success", response);
          })
-         .catch(error => {
+         .catch((error) => {
             console.log("registration failure", error.response);
          });
       window.location = "/";
@@ -48,13 +53,16 @@ class Register extends Component {
       const newUser = {
          name: this.state.name,
          email: this.state.email,
-         password: this.state.password
+         password: this.state.password,
       };
 
       console.log(newUser);
 
       return (
          <div className="container-fluid" id="reg-container">
+            <div className="header">
+               <h1>Create an Account</h1>
+            </div>
             <div className="register">
                <form onSubmit={this.handleSubmit}>
                   <div className="register-email">
@@ -97,10 +105,7 @@ class Register extends Component {
                         Register
                      </button>
                      <Router forceRefresh={true}>
-                        <Link
-                           to="/"
-                           className="btn btn-link"
-                        >
+                        <Link to="/" className="btn btn-link">
                            Login
                         </Link>
                      </Router>
