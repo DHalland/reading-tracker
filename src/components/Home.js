@@ -44,10 +44,12 @@ class Home extends Component {
          <div className="container-fluid-home">
             <div className="user-info">
                <div className="top-left">Currently Reading</div>
-               <div id="content">
+               <div className="content">
                   {Object.keys(this.state.data).map((key) =>
-                  <div>
+                  <div className="card">
+                  
                   <div>{this.state.data[key].entry_name}</div>
+                  <span>by</span>
                   <div>{this.state.data[key].entry_author}</div>
                   </div>
                   )}
