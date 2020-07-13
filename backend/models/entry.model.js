@@ -5,20 +5,11 @@ const Entry = new Schema({
     user_id: {
         type: String
     },
-    entry_name: {
-        type: String
-    },
-    entry_author: {
-        type: String
-    },
-    entry_time: {
-        type: Number
-    },
     entry_pages: {
         type: Number
     },
-    entry_completed: {
-        type: Boolean
+    entry_minutes: {
+        type: Number
     }},
     {
     timestamps: true,

@@ -16,6 +16,14 @@ class Login extends Component {
       };
    }
 
+   componentDidMount() {
+      document.addEventListener("keyup", function(event) {
+         if(event.keyCode == 13) {
+            this.handleSubmit();
+         }
+      })
+   }
+
    onChange = e => {
       this.setState({ [e.target.id]: e.target.value });
    };
@@ -43,6 +51,8 @@ class Login extends Component {
          });
       // window.location = "/";
    };
+
+   
 
    render() {
       if (!this.state.loggedIn) {

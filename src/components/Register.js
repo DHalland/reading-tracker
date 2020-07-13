@@ -24,6 +24,14 @@ class Register extends Component {
       // this.password = this.password.bind(this);
    }
 
+   componentDidMount() {
+      document.addEventListener("keyup", function(event) {
+         if(event.keyCode == 13) {
+            this.handleSubmit();
+         }
+      })
+   }
+
    onChange = (e) => {
       this.setState({ [e.target.id]: e.target.value });
    };
